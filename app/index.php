@@ -74,7 +74,9 @@ $is_auth = (bool) rand(0, 1);
                     }else{
                         ?>
                     <li><a href="contact.html">My profile</a></li>
+                    <?php
                     }
+                    ?>
                 </ul>
 
             </div>
