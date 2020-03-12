@@ -1,16 +1,83 @@
 <?php
-$is_auth = (bool) rand(0, 1);
+$is_auth = (bool)rand(0, 1);
 ?>
 
+<?php $data = [
+    [
+        'link' => "blog.html",
+        'img' => "assets/images/blog-1.jpg",
+        'category' => "Travel",
+        'title' => "Home is peaceful place",
+        'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
+        'author' => "Rubel",
+        'date' => "February 12, 2019"
+    ],
+    [
+        'link' => "blog.html",
+        'img' => "assets/images/abc.jpg",
+        'category' => "craft",
+        'title' => "wooden table is beautiful",
+        'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
+        'author' => "Rubel",
+        'date' => "February 10, 2019"
+    ],
+    [
+        'link' => "blog.html",
+        'img' => "assets/images/blog-2.jpg",
+        'category' => "Lifestyle",
+        'title' => "Small work station",
+        'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
+        'author' => "Rubel",
+        'date' => "February 12, 2018"
+    ],
+    [
+        'link' => "blog.html",
+        'img' => "assets/images/blog-3.jpg",
+        'category' => "Mission",
+        'title' => "Waiting to launch on the sky",
+        'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
+        'author' => "Rubel",
+        'date' => "February 12, 2018"
+    ],
+    [
+        'link' => "blog.html",
+        'img' => "assets/images/blog-4.jpg",
+        'category' => "Cloth",
+        'title' => "A day labour wore jeans",
+        'text' => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
+eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
+        'author' => "Rubel",
+        'date' => "February 12, 2018"
+    ],
+];
 
-
+?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- favicon icon -->
@@ -66,15 +133,15 @@ $is_auth = (bool) rand(0, 1);
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     <?php
-                    if($is_auth == false){
+                    if ($is_auth == false) {
                         ?>
                         <li><a href="#">Register</a></li>
                         <li><a href="about-me.html">Login</a></li>
                         <?php
-                    }else{
+                    } else {
                         ?>
-                    <li><a href="contact.html">My profile</a></li>
-                    <?php
+                        <li><a href="contact.html">My profile</a></li>
+                        <?php
                     }
                     ?>
                 </ul>
@@ -101,207 +168,51 @@ $is_auth = (bool) rand(0, 1);
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <article class="post">
-                    <div class="post-thumb">
-                        <a href="blog.html"><img src="assets/images/blog-1.jpg" alt=""></a>
 
-                        <a href="blog.html" class="post-thumb-overlay text-center">
-                            <div class="text-uppercase text-center">View Post</div>
-                        </a>
-                    </div>
-                    <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="#"> Travel</a></h6>
+                <?php
+                foreach ($data as $article) {
+                    ?>
+                    <article class="post">
+                        <div class="post-thumb">
+                            <a href="<?= $article["link"]; ?>"><img src="<?= $article["img"]; ?>" alt=""></a>
 
-                            <h1 class="entry-title"><a href="blog.html">Home is peaceful place</a></h1>
+                            <a href="<?= $article["link"]; ?>" class="post-thumb-overlay text-center">
+                                <div class="text-uppercase text-center">View Post</div>
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <header class="entry-header text-center text-uppercase">
+                                <h6><a href="#"> <?= $article["category"]; ?></a></h6>
+
+                                <h1 class="entry-title"><a href="<?= $article["link"]; ?>"><?= $article["title"]; ?></a></h1>
 
 
-                        </header>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
-                            </p>
+                            </header>
+                            <div class="entry-content">
+                                <p><?= $article["text"]; ?>
+                                </p>
 
-                            <div class="btn-continue-reading text-center text-uppercase">
-                                <a href="blog.html" class="more-link">Continue Reading</a>
+                                <div class="btn-continue-reading text-center text-uppercase">
+                                    <a href="<?= $article["link"]; ?>" class="more-link">Continue Reading</a>
+                                </div>
+                            </div>
+                            <div class="social-share">
+                                <span class="social-share-title pull-left text-capitalize">By <a href="#"><?= $article["author"]; ?></a> On <?= $article["date"]; ?></span>
+                                <ul class="text-center pull-right">
+                                    <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
-                            <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="post-thumb">
-                        <a href="blog.html"><img src="assets/images/abc.jpg" alt=""></a>
+                    </article>
 
-                        <a href="blog.html" class="post-thumb-overlay text-center">
-                            <div class="text-uppercase text-center">View Post</div>
-                        </a>
-                    </div>
-                    <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="#">craft</a></h6>
+                    <?php
+                }
 
-                            <h1 class="entry-title"><a href="blog.html">wooden table is beautiful</a></h1>
-
-
-                        </header>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
-                            </p>
-
-                            <div class="btn-continue-reading text-center text-uppercase">
-                                <a href="blog.html" class="more-link">Continue Reading</a>
-                            </div>
-                        </div>
-                        <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
-                            <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="post-thumb">
-                        <a href="blog.html"><img src="assets/images/blog-2.jpg" alt=""></a>
-
-                        <a href="blog.html" class="post-thumb-overlay text-center">
-                            <div class="text-uppercase text-center">View Post</div>
-                        </a>
-                    </div>
-                    <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="#"> Lifestyle</a></h6>
-
-                            <h1 class="entry-title"><a href="blog.html">Small work station</a></h1>
-
-
-                        </header>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
-                            </p>
-
-                            <div class="btn-continue-reading text-center text-uppercase">
-                                <a href="blog.html" class="more-link">Continue Reading</a>
-                            </div>
-                        </div>
-                        <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
-                            <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-                <article class="post">
-                    <div class="post-thumb">
-                        <a href="blog.html"><img src="assets/images/blog-3.jpg" alt=""></a>
-
-                        <a href="blog.html" class="post-thumb-overlay text-center">
-                            <div class="text-uppercase text-center">View Post</div>
-                        </a>
-                    </div>
-                    <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="#"> Mission</a></h6>
-
-                            <h1 class="entry-title"><a href="blog.html">Waiting to launch on the sky</a></h1>
-
-
-                        </header>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
-                            </p>
-
-                            <div class="btn-continue-reading text-center text-uppercase">
-                                <a href="blog.html" class="more-link">Continue Reading</a>
-                            </div>
-                        </div>
-                        <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
-                            <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post">
-                    <div class="post-thumb">
-                        <a href="blog.html"><img src="assets/images/blog-4.jpg" alt=""></a>
-
-                        <a href="blog.html" class="post-thumb-overlay text-center">
-                            <div class="text-uppercase text-center">View Post</div>
-                        </a>
-                    </div>
-                    <div class="post-content">
-                        <header class="entry-header text-center text-uppercase">
-                            <h6><a href="#"> Cloth</a></h6>
-
-                            <h1 class="entry-title"><a href="blog.html">A day labour wore jeans</a></h1>
-
-
-                        </header>
-                        <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
-                            </p>
-
-                            <div class="btn-continue-reading text-center text-uppercase">
-                                <a href="blog.html" class="more-link">Continue Reading</a>
-                            </div>
-                        </div>
-                        <div class="social-share">
-                            <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On February 12, 2016</span>
-                            <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
+                ?>
                 <ul class="pagination">
                     <li class="active"><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
@@ -312,7 +223,7 @@ $is_auth = (bool) rand(0, 1);
             </div>
             <div class="col-md-4" data-sticky_column>
                 <div class="primary-sidebar">
-                    
+
                     <aside class="widget news-letter">
                         <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
 
@@ -659,7 +570,7 @@ $is_auth = (bool) rand(0, 1);
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">&copy; 2017 <a href="#">Blog, </a> Designed with <i
-                            class="fa fa-heart"></i> by <a href="#">Marlin</a>
+                                class="fa fa-heart"></i> by <a href="#">Marlin</a>
                     </div>
                 </div>
             </div>
