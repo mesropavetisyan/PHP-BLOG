@@ -1,10 +1,24 @@
 <?php
 $page = "";
 $title = "Home";
-require_once("templates/header.php");
-if($page == ""){
-    require_once("templates/home.php");
-    require_once("templates/aside.php");
-    require_once("templates/footer.php");
+
+
+if(!empty($_GET) && !empty($_GET['p'])){
+    $page = $_GET['p'];
 }
-require_once("function.php");
+
+require("templates/header.php");
+
+if($page == ""){
+    require("templates/home.php");
+} else {
+    if(file_exists("templates/$page.php")){
+        require("templates/$page.php");
+    }else {
+        require("templates/home.php");
+    }
+}
+
+require("templates/aside.php");
+require("templates/footer.php");
+require("function.php");
