@@ -126,21 +126,21 @@ eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav text-uppercase">
-                    <li><a href="#">Homepage</a></li>
-                    <li><a href="about-me.html">ABOUT ME </a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="?p=home">Homepage</a></li>
+                    <li><a href="?p=about">ABOUT ME </a></li>
+                    <li><a href="?p=contact">CONTACT</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     <?php
                     if ($is_auth == false) {
                         ?>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="about-me.html">Login</a></li>
+                        <li><a href="?p=register">Register</a></li>
+                        <li><a href="?p=login">Login</a></li>
                         <?php
                     } else {
                         ?>
-                        <li><a href="contact.html">My profile</a></li>
+                        <li><a href="?p=profile">My profile</a></li>
                         <?php
                     }
                     ?>
