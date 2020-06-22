@@ -3,18 +3,21 @@ $page = "";
 $title = "Home";
 
 
-if(!empty($_GET) && !empty($_GET['p'])){
+if (!empty($_GET) && !empty($_GET['p'])) {
     $page = $_GET['p'];
 }
 
 require("templates/header.php");
 
-if($page == ""){
+if ($page == "") {
     require("templates/home.php");
 } else {
-    if(file_exists("templates/$page.php")){
+    if (file_exists("templates/$page.php")) {
+        if(file_exists("controllers/$page-controller.php")){
+            require("controllers/$page-controller.php");
+        }
         require("templates/$page.php");
-    }else {
+    } else {
         require("templates/home.php");
     }
 }
