@@ -4,6 +4,7 @@
 
                     <h3 class="text-uppercase">Login</h3>
                     <br>
+                    <?= (!empty($data['authorization']['error-message'])) ? "<p class='warning-message'>" . $data['authorization']['error-message'] . " </p>" : "" ?>
                     <form class="form-horizontal contact-form" role="form" method="post" action="">
                         <div class="form-group">
                             <div class="col-md-12">
