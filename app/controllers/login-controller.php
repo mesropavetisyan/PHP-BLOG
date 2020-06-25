@@ -35,6 +35,8 @@ function validateLogin()
         if (empty($data['email']['error-message']) && $data['email']['value'] == $login &&
             password_verify($_POST['password'], $pass)
         ) {
+
+            setcookie("am",true,strtotime("+2days"));
             header("Location:?p=profile");
         } else {
             $data["authorization"]["error-message"] = "Email or password is not correct";

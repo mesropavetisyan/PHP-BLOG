@@ -128,10 +128,20 @@ eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
-
-                    <li><a href="?p=register">Register</a></li>
-                    <li><a href="?p=login">Login</a></li>
-                    <li><a href="?p=profile">My profile</a></li>
+                    <?php
+                    $isAuth = !empty($_COOKIE['am']) ? true : false;
+                    if ($isAuth) {
+                        ?>
+                        <li><a href="?p=profile">My profile</a></li>
+                        <li><a href="?p=logout">Log Out</a></li>
+                        <?php
+                    }else {
+                        ?>
+                        <li><a href="?p=register">Register</a></li>
+                        <li><a href="?p=login">Login</a></li>
+                    <?php
+                    }
+                    ?>
                 </ul>
 
             </div>
