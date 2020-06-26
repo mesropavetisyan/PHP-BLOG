@@ -1,7 +1,3 @@
-<?php
-$is_auth = (bool)rand(0, 1);
-?>
-
 <?php $data = [
     [
         'link' => "blog.html",
@@ -133,15 +129,17 @@ eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.",
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     <?php
-                    if ($is_auth == false) {
+                    $isAuth = !empty($_COOKIE['am']) ? true : false;
+                    if ($isAuth) {
+                        ?>
+                        <li><a href="?p=profile">My profile</a></li>
+                        <li><a href="?p=logout">Log Out</a></li>
+                        <?php
+                    }else {
                         ?>
                         <li><a href="?p=register">Register</a></li>
                         <li><a href="?p=login">Login</a></li>
-                        <?php
-                    } else {
-                        ?>
-                        <li><a href="?p=profile">My profile</a></li>
-                        <?php
+                    <?php
                     }
                     ?>
                 </ul>
