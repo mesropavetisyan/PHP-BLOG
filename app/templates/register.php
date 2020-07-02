@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <input type="password" class="form-control" id="password" name="password"
                            placeholder="password"
-                           value="<?= (!empty($data['password']['value'])) ?  $data['password']['value'] : "" ?>">
+                           value="">
                     <?= (!empty($data['password']['error-message'])) ? "<p class='warning-message'>" . $data['password']['error-message'] . " </p>" : "" ?>
                 </div>
             </div>

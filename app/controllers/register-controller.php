@@ -35,7 +35,7 @@ function validateRegister()
     if(empty($_POST['password'])){
         $data['password']['error-message'] = "Password is required";
     }else {
-//        $data['password']['value'] = $_POST['password'];
+        $data['password']['value'] = password_hash($_POST['password'],PASSWORD_DEFAULT);
     }
     return $data;
 }
@@ -55,5 +55,6 @@ function IssetErrors ($data)
 $data = validateRegister();
 
 if (!IssetErrors($data)) {
+    addNewUser($data['name']['value'], $data['email']['value'],$data['password']['value'] );
     header("Location:?p=login");
 }

@@ -7,12 +7,16 @@ if (!empty($_GET) && !empty($_GET['p'])) {
     $page = $_GET['p'];
 }
 
+require("models/model.php");
 require("templates/header.php");
 
 if ($page == "") {
     require("templates/home.php");
 } else {
     if (file_exists("templates/$page.php")) {
+        if(file_exists("models/$page-model.php")){
+            require("models/$page-model.php");
+        }
         if(file_exists("controllers/$page-controller.php")){
             require("controllers/$page-controller.php");
         }
