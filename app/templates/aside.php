@@ -159,32 +159,31 @@
         </aside>
         <aside class="widget border pos-padding">
             <h3 class="widget-title text-uppercase text-center">Categories</h3>
-            <ul>
-                <li>
-                    <a href="#">Food & Drinks</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Travel</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Business</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Story</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">DIY & Tips</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-                <li>
-                    <a href="#">Lifestyle</a>
-                    <span class="post-count pull-right"> (2)</span>
-                </li>
-            </ul>
+            <?php
+            IF (empty($categories)) {
+                ?>
+                <p class="no-categories">
+                    No categories
+                </p>
+                <?php
+            } else {
+                ?>
+                <ul>
+                    <?php
+                    foreach ($categories as $category) {
+                        ?>
+                        <li>
+                            <a href="?p=post&category=<?= $category["id"]; ?>"><?= $category["name"]; ?></a>
+                            <span class="post-count pull-right"> (<?= $category["count"]; ?>)</span>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+                <?php
+
+            }
+            ?>
         </aside>
     </div>
 </div>

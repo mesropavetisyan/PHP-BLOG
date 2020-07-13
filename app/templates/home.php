@@ -13,7 +13,26 @@
             </div>
             <div class="post-content">
                 <header class="entry-header text-center text-uppercase">
-                    <h6><a href="#"> <?= $article["category"]; ?></a></h6>
+                    <?php
+                    $cats = explode(',', $article["category"]);
+                    ?>
+                    <h6>
+                        <?php
+                        foreach ($cats as $ind => $cat) {
+                            $cat = explode('=', $cat);
+                            ?>
+                            <a href="?page=post&category=<?= $cat[0]; ?>">
+                                <?= $cat["1"]; ?>
+                                <?php
+                                if ($ind != count($cats) - 1) {
+                                    echo ",";
+                                }
+                                ?>
+                            </a>
+                            <?php
+                        }
+                        ?>
+                    </h6>
 
                     <h1 class="entry-title"><a href="<?= $article["url"]; ?>"><?= $article["title"]; ?></a></h1>
 
@@ -28,7 +47,8 @@
                     </div>
                 </div>
                 <div class="social-share">
-                    <span class="social-share-title pull-left text-capitalize">By <a href="#"><?= $article["author"]; ?></a> On <?= $article["date"]; ?></span>
+                    <span class="social-share-title pull-left text-capitalize">By <a
+                                href="#"><?= $article["author"]; ?></a> On <?= $article["date"]; ?></span>
                     <ul class="text-center pull-right">
                         <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
