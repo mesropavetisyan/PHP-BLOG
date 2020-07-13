@@ -9,6 +9,7 @@ if (!empty($_GET) && !empty($_GET['p'])) {
 }
 
 require("models/model.php");
+require("controllers/controller.php");
 require("templates/header.php");
 
 if ($page == "") {
