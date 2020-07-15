@@ -1,88 +1,45 @@
 <div class="col-md-8">
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="blog.html"><img src="assets/images/blog-1.jpg" alt=""></a>
+                        <a href="?p=post&url=<?= $data['url']?>"><img src="assets/images/blog-1.jpg" alt=""></a>
                     </div>
                     <div class="post-content">
                         <header class="entry-header text-center text-uppercase">
-                            <h6><a href="#"> Travel</a></h6>
+                            <?php
+                            $cats = explode(',', $data["category"]);
+                            ?>
+                            <h6>
+                                <?php
+                                foreach ($cats as $ind => $cat) {
+                                    $cat = explode('=', $cat);
+                                    ?>
+                                    <a href="?page=post&category=<?= strip_tags($cat[0]); ?>">
+                                        <?= strip_tags($cat["1"]); ?>
+                                        <?php
+                                        if ($ind != count($cats) - 1) {
+                                            echo ",";
+                                        }
+                                        ?>
+                                    </a>
+                                    <?php
+                                }
+                                ?>
+                            </h6>
 
-                            <h1 class="entry-title"><a href="blog.html">Home is peaceful place</a></h1>
+                            <h1 class="entry-title">
+                                <a href="?p=post&url=<?= $data['url']?>">
+                                    <?= strip_tags($data['title'])?>
+                                </a>
+                            </h1>
 
 
                         </header>
                         <div class="entry-content">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                tevidulabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                                justo duo dolores rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                                ipsum dolor sit am Lorem ipsum dolor sitconsetetur sadipscing elitr, sed diam nonumy
-                                eirmod tempor invidunt ut labore et dolore maliquyam erat, sed diam voluptua.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
-
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirtempor
-                                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero accusam et
-                                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctusest
-                                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elised
-                                diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sdiam
-                                voluptua. At vero eos et accusam.
-                            </p>
+                           <?= $data['text']?>
                         </div>
-                        <div class="decoration">
-                            <a href="#" class="btn btn-default">Decoration</a>
-                            <a href="#" class="btn btn-default">Decoration</a>
-                        </div>
-
                         <div class="social-share">
 							<span
-                                    class="social-share-title pull-left text-capitalize">By Rubel On February 12, 2016</span>
+                                    class="social-share-title pull-left text-capitalize">By <?= $data['author']?> On <?= $data['date']?> </span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -93,47 +50,6 @@
                         </div>
                     </div>
                 </article>
-                <div class="top-comment"><!--top comment-->
-                    <img src="assets/images/comment.jpg" class="pull-left img-circle" alt="">
-                    <h4>Rubel Miah</h4>
-
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                        invidunt ut labore et dolore magna aliquyam erat.</p>
-                </div><!--top comment end-->
-                <div class="row"><!--blog next previous-->
-                    <div class="col-md-6">
-                        <div class="single-blog-box">
-                            <a href="#">
-                                <img src="assets/images/blog-next.jpg" alt="">
-
-                                <div class="overlay">
-
-                                    <div class="promo-text">
-                                        <p><i class=" pull-left fa fa-angle-left"></i></p>
-                                        <h5>Rubel is doing Cherry theme</h5>
-                                    </div>
-                                </div>
-
-
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="single-blog-box">
-                            <a href="#">
-                                <img src="assets/images/blog-next.jpg" alt="">
-
-                                <div class="overlay">
-                                    <div class="promo-text">
-                                        <p><i class=" pull-right fa fa-angle-right"></i></p>
-                                        <h5>Rubel is doing Cherry theme</h5>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div><!--blog next previous end-->
                 <div class="related-post-carousel"><!--related post carousel-->
                     <div class="related-heading">
                         <h4>You might also like</h4>
@@ -222,22 +138,6 @@ December, 02, 2015 at 5:57 PM
 
 
                     <form class="form-horizontal contact-form" role="form" method="post" action="#">
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" id="email" name="email"
-                                       placeholder="Email">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" id="subject" name="subject"
-                                       placeholder="Website url">
-                            </div>
-                        </div>
                         <div class="form-group">
                             <div class="col-md-12">
 										<textarea class="form-control" rows="6" name="message"

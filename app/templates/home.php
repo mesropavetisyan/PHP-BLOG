@@ -65,10 +65,21 @@
 
     ?>
     <ul class="pagination">
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+
+        <?php
+        for($i=1;$i<=$pageCount;$i++){
+            ?>
+            <li <?= ($currentPage==$i)? 'class="active"' : ""?>>
+                <a href="?p=home&page=<?=$i?>"><?=$i?></a>
+            </li>
+            <?php
+        }
+        ?>
+
+<!--        <li class="active"><a href="?p=home&page=1">1</a></li>-->
+<!--        <li><a href="?p=home&page=1">2</a></li>-->
+<!--        <li><a href="#">3</a></li>-->
+<!--        <li><a href="#">4</a></li>-->
+        <li><a href="?p=home&page=<?=$currentPage + 1 ?>"><i class="fa fa-angle-double-right"></i></a></li>
     </ul>
 </div>
