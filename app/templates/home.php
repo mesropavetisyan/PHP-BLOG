@@ -34,7 +34,8 @@
                         ?>
                     </h6>
 
-                    <h1 class="entry-title"><a href="?p=post&url=<?= $article["url"]; ?>"><?= $article["title"]; ?></a></h1>
+                    <h1 class="entry-title"><a href="?p=post&url=<?= $article["url"]; ?>"><?= $article["title"]; ?></a>
+                    </h1>
 
 
                 </header>
@@ -62,24 +63,30 @@
 
         <?php
     }
-
-    ?>
-    <ul class="pagination">
-
-        <?php
-        for($i=1;$i<=$pageCount;$i++){
-            ?>
-            <li <?= ($currentPage==$i)? 'class="active"' : ""?>>
-                <a href="?p=home&page=<?=$i?>"><?=$i?></a>
-            </li>
-            <?php
-        }
+    if ($pageCount > 1) {
         ?>
+        <ul class="pagination">
 
-<!--        <li class="active"><a href="?p=home&page=1">1</a></li>-->
-<!--        <li><a href="?p=home&page=1">2</a></li>-->
-<!--        <li><a href="#">3</a></li>-->
-<!--        <li><a href="#">4</a></li>-->
-        <li><a href="?p=home&page=<?=$currentPage + 1 ?>"><i class="fa fa-angle-double-right"></i></a></li>
-    </ul>
+            <?php
+            for ($i = 1; $i <= $pageCount; $i++) {
+                ?>
+                <li <?= ($currentPage == $i) ? 'class="active"' : "" ?>>
+                    <a href="?p=home&page=<?= $i ?>"><?= $i ?></a>
+                </li>
+                <?php
+            }
+            ?>
+            <?php
+            if ($currentPage < $pageCount) {
+                ?>
+                <li><a href="?p=home&page=<?= $currentPage + 1 ?>"><i class="fa fa-angle-double-right"></i></a></li>
+                <?php
+            }
+
+            ?>
+        </ul>
+    <?php
+
+    }
+    ?>
 </div>

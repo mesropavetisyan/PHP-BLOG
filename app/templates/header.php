@@ -63,7 +63,7 @@
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     <?php
-                    $isAuth = !empty($_COOKIE['am']) ? true : false;
+                    $isAuth = !empty($_SESSION['userId']) ? true : false;
                     if ($isAuth) {
                         ?>
                         <li><a href="?p=profile">My profile</a></li>

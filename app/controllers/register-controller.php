@@ -1,4 +1,9 @@
 <?php
+if(!empty($_SESSION['userId'])){
+    session_destroy();
+    header("Location: ?" . $_SERVER['QUERY_STRING']);
+}
+
 function validateRegister()
 {
     $data = [

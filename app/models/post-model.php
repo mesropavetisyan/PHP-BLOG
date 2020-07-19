@@ -8,7 +8,6 @@ JOIN blog_post_categories
 ON blog_posts.id = blog_post_id 
 JOIN categories
 ON category_id = categories.id
-WHERE isActive =1
 WHERE isActive=1 AND url='$url'
 GROUP BY blog_posts.id";
 return mysqli_query($conn, $sql);
