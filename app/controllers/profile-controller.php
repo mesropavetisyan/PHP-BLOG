@@ -1,11 +1,16 @@
 <?php
-if(!empty($_SESSION['userId'])){
-    session_destroy();
-    header("Location: ?" . $_SERVER['QUERY_STRING']);
+if(empty($_SESSION['userId'])){
+    header("Location: ?p=login");
 }
 
-function validateRegister()
-{
+$data = getUserInfo($_SESSION['userId']);
+if(!$data){
+    header("Location: ?p=login");
+}
+
+$data = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+function validateForm(){
     $data = [
         "name" => [
             "value" => "",
@@ -16,6 +21,10 @@ function validateRegister()
             "error-message" => "",
         ],
         "password" => [
+            "value" => "",
+            "error-message" => "",
+        ],
+        "image" => [
             "value" => "",
             "error-message" => "",
         ],
@@ -40,13 +49,18 @@ function validateRegister()
             $data['email']['error-message'] = "Email is not correct";
         }
     }
-    if (empty($_POST['password'])) {
-        $data['password']['error-message'] = "Password is required";
-    } else {
+    if (!empty($_POST['password'])) {
         $data['password']['value'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+
+    if(!empty($_FILES['image'])){
+        /** TODO write file validation */
+        $data['image']['value'] = $_FILES['image']['tmp_name'];
     }
     return $data;
 }
+
+$formData = validateForm();
 
 function IssetErrors($data)
 {
@@ -61,16 +75,27 @@ function IssetErrors($data)
     return false;
 }
 
-$data = validateRegister();
-
-if (!IssetErrors($data)) {
-    $res = addNewUser($data['name']['value'], $data['email']['value'], $data['password']['value']);
-    if (!$res) {
-        $err = mysqli_error($conn);
-        if($err = "Duplicate entry '".$data['email']['value']."' for key 'email'"){
-$data['authorization']['error-message'] = "User with email '".$data['email']['value']."' already exists";
-        }
-    }else {
-        header("Location:?p=login");
+function saveUserImage($tmp){
+    $imageName = time() * 1000;
+    if(move_uploaded_file($tmp,"assets/images/users/$imageName.jpg")){
+        return "$imageName.jpg";
     }
+    return false;
+}
+
+if(!IssetErrors($formData)){
+$imgRes = saveUserImage($formData['image']['value']);
+if($imgRes){
+    $r = updateUserInfo(
+        [
+            "id"=>$_SESSION['userId'],
+            "name"=>$formData['name']['value'],
+            "email"=>$formData['email']['value'],
+            "image"=>$imgRes,
+        ]
+    );
+    if($r){
+        header("Location: ?p=profile");
+    }
+}
 }
