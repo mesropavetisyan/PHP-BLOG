@@ -1,4 +1,5 @@
 <?php
+define("MYVAR","myvalue");
 session_start();
 $page = "";
 $title = "Home";
